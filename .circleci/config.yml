@@ -3,7 +3,6 @@ orbs:
   node: circleci/node@4.9.0
   aws-cli: circleci/aws-cli@2.0.6
   aws-role-config: opensimsim/aws-role-config@1.1.0
-  eb: circleci/aws-elastic-beanstalk@2.0.1
 jobs:
   build:
     docker:
@@ -32,6 +31,13 @@ jobs:
           name: Deploy Frontend App
           command: |
             npm run frontend:deploy
+      - run:
+          name: Installing eb cli
+          working_directory: /
+          command: |
+            sudo apt-get -y -qq update
+            sudo apt-get install python3-pip python3-dev build-essential
+            sudo pip3 install awsebcli
       - run:
           name: Deploy Backend App
           command: |
