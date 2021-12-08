@@ -2,6 +2,7 @@ version: 2.1
 orbs:
   node: circleci/node@4.9.0
   aws-cli: circleci/aws-cli@2.0.6
+  aws-role-config: opensimsim/aws-role-config@1.1.0
 jobs:
   build:
     docker:
@@ -26,10 +27,10 @@ jobs:
           name: Back-End Build
           command: |
             npm run backend:build
-      # - run:
-      #     name: Deploy Frontend App
-      #     command: |
-      #       npm run frontend:deploy
+      - run:
+          name: Deploy Frontend App
+          command: |
+            npm run frontend:deploy
       # - run:
       #     name: Deploy Backend App
       #     command: |
