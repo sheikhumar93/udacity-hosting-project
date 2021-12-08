@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "frontend:install": "cd ./udagram/udagram-frontend && npm install",
+    "backend:install": "cd ./udagram/udagram-api && npm install",
+    "frontend:build": "cd ./udagram/udagram-frontend && ng build --configuration=production",
+    "backend:build": "cd ./udagram/udagram-api && npm run build",
+    "frontend:deploy": "",
+    "backend:deploy": ""
+  }
+}
