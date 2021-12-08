@@ -36,23 +36,23 @@ jobs:
           name: Deploy Backend App
           command: |
             npm run backend:deploy
-      # # front end install dependencies
-      # - run:
-      #     name: Front-End Install
-      #     command: |
-      #       npm run frontend:install
-      # # front end run tests
-      # - run:
-      #     name: Front-End Test
-      #     command: |
-      #       npm run frontend:test
-      # # front end build
-      # - run:
-      #     name: Front-End Build
-      #     command: |
-      #       npm run frontend:build
-      # # front end deploy to s3 via aws cli
-      # - run:
-      #     name: Deploy Frontend App
-      #     command: |
-      #       npm run frontend:deploy
+      # front end install dependencies
+      - run:
+          name: Front-End Install
+          command: |
+            npm run frontend:install
+      # front end run tests
+      - run:
+          name: Front-End Test
+          command: |
+            npm run frontend:test
+      # front end build
+      - run:
+          name: Front-End Build
+          command: |
+            npm run frontend:build
+      # front end deploy to s3 via aws cli
+      - run:
+          name: Deploy Frontend App
+          command: |
+            npm run frontend:deploy
