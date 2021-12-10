@@ -1,4 +1,4 @@
-[![umar](https://circleci.com/gh/umar/udacity-hosting-project.svg?style=svg)](https://app.circleci.com/pipelines/github/sheikhumar93/udacity-hosting-project)
+[![CircleCI](https://circleci.com/gh/sheikhumar93/udacity-hosting-project/tree/main.svg?style=svg)](https://circleci.com/gh/sheikhumar93/udacity-hosting-project/tree/main)
 
 # Hosting a Full-Stack Application
 
