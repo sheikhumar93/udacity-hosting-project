@@ -1,8 +1,8 @@
 branch-defaults:
   default:
-    environment: udagaram-env
+    environment: udagramapi-env
 global:
-  application_name: udacity-udagram-app
+  application_name: udagram-api
   branch: null
   default_ec2_keyname: null
   default_platform: Node.js
