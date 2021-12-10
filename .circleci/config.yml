@@ -51,3 +51,6 @@ jobs:
           name: Deploy Frontend App
           command: |
             npm run frontend:deploy
+    filters:
+      branches:
+        only: main
