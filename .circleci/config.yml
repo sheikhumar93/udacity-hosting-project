@@ -3,53 +3,57 @@ orbs:
   node: circleci/node@4.9.0
   aws-cli: circleci/aws-cli@2.0.6
   eb: circleci/aws-elastic-beanstalk@2.0.1
+jobs:
+  build_deploy:
+    docker:
+      - image: "cimg/base:stable"
+    steps:
+      - node/install
+      - checkout
+      # install aws cli from orb
+      - aws-cli/setup
+      # install eb cli from orb
+      - eb/setup
+      # back end install dependencies
+      - run:
+          name: Back-End Install
+          command: |
+            npm run backend:install
+      # back end run tests
+      - run:
+          name: Back-End Test
+          command: |
+            npm run backend:test
+      # back end build
+      - run:
+          name: Back-End Build
+          command: |
+            npm run backend:build
+      # back end deploy via ebs cli
+      - run:
+          name: Deploy Backend App
+          command: |
+            npm run backend:deploy
+      # front end install dependencies
+      - run:
+          name: Front-End Install
+          command: |
+            npm run frontend:install
+      # front end build
+      - run:
+          name: Front-End Build
+          command: |
+            npm run frontend:build
+      # front end deploy to s3 via aws cli
+      - run:
+          name: Deploy Frontend App
+          command: |
+            npm run frontend:deploy
+
 workflows:
-  build-deploy:
+  default:
     jobs:
-      filters:
-        branches:
-          only: main
-      docker:
-        - image: "cimg/base:stable"
-      steps:
-        - node/install
-        - checkout
-        # install aws cli from orb
-        - aws-cli/setup
-        # install eb cli from orb
-        - eb/setup
-        # back end install dependencies
-        - run:
-            name: Back-End Install
-            command: |
-              npm run backend:install
-        # back end run tests
-        - run:
-            name: Back-End Test
-            command: |
-              npm run backend:test
-        # back end build
-        - run:
-            name: Back-End Build
-            command: |
-              npm run backend:build
-        # back end deploy via ebs cli
-        - run:
-            name: Deploy Backend App
-            command: |
-              npm run backend:deploy
-        # front end install dependencies
-        - run:
-            name: Front-End Install
-            command: |
-              npm run frontend:install
-        # front end build
-        - run:
-            name: Front-End Build
-            command: |
-              npm run frontend:build
-        # front end deploy to s3 via aws cli
-        - run:
-            name: Deploy Frontend App
-            command: |
-              npm run frontend:deploy
+      - build_deploy
+        filters:
+          branches:
+            only: main
