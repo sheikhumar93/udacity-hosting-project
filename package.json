@@ -5,7 +5,7 @@
     "backend:test": "cd ./udagram/udagram-api && npm run test",
     "frontend:build": "cd ./udagram/udagram-frontend && node_modules/.bin/ng build --configuration=production",
     "backend:build": "cd ./udagram/udagram-api && npm run build",
-    "frontend:deploy": "cd ./udagram/udagram-frontend && aws s3 cp --recursive ./www s3://udacity-db-hosting-app/",
+    "frontend:deploy": "cd ./udagram/udagram-frontend && aws s3 cp --recursive ./www s3://udagram-frontend-1/",
     "backend:deploy": "cd ./udagram/udagram-api && npm run deploy"
   }
 }
